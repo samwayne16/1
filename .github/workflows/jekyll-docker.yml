@@ -1,4 +1,4 @@
-name: CI3
+name: CI4
 
 on:
   push:
